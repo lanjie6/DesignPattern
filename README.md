@@ -5564,7 +5564,7 @@ public class ScoreContext {
 public abstract class AbstractState {
 
     //环境
-    protected ScoreContext hj;
+    protected ScoreContext environment;
 
     //状态名
     protected String stateName;
@@ -5579,9 +5579,9 @@ public abstract class AbstractState {
 
     public void addScore(int x) {
         score += x;
-        System.out.print("加上：" + x + "分，\t当前分数：" + score);
+        System.out.print("加上：" + x + "分，当前分数：" + score);
         checkState();
-        System.out.println("分，\t当前状态：" + hj.getState().stateName);
+        System.out.println("分，当前状态：" + environment.getState().stateName);
     }
 }
 ```
@@ -5596,23 +5596,23 @@ public abstract class AbstractState {
  */
 public class LowState extends AbstractState {
 
-    public LowState(ScoreContext h) {
-        hj = h;
+    public LowState(ScoreContext scoreContext) {
+        environment = scoreContext;
         stateName = "不及格";
         score = 0;
     }
 
     public LowState(AbstractState state) {
-        hj = state.hj;
+        environment = state.environment;
         stateName = "不及格";
         score = state.score;
     }
 
     public void checkState() {
         if (score >= 90) {
-            hj.setState(new HighState(this));
+            environment.setState(new HighState(this));
         } else if (score >= 60) {
-            hj.setState(new MiddleState(this));
+            environment.setState(new MiddleState(this));
         }
     }
 }
@@ -5629,16 +5629,16 @@ public class LowState extends AbstractState {
 public class MiddleState extends AbstractState {
 
     public MiddleState(AbstractState state) {
-        hj = state.hj;
+        environment = state.environment;
         stateName = "中等";
         score = state.score;
     }
 
     public void checkState() {
         if (score < 60) {
-            hj.setState(new LowState(this));
+            environment.setState(new LowState(this));
         } else if (score >= 90) {
-            hj.setState(new HighState(this));
+            environment.setState(new HighState(this));
         }
     }
 }
@@ -5655,40 +5655,24 @@ public class MiddleState extends AbstractState {
 public class HighState extends AbstractState {
 
     public HighState(AbstractState state) {
-        hj = state.hj;
+        environment = state.environment;
         stateName = "优秀";
         score = state.score;
     }
 
     public void checkState() {
         if (score < 60) {
-            hj.setState(new LowState(this));
+            environment.setState(new LowState(this));
         } else if (score < 90) {
-            hj.setState(new MiddleState(this));
+            environment.setState(new MiddleState(this));
         }
     }
 }
 ```
 
-总结：
+运行结果：
 
-1.结构清晰，状态模式将与特定状态相关的行为局部化到一个状态中，并且将不同状态的行为分割开来，满足“单一职责原则”。
-
-2.将状态转换显示化，减少对象间的相互依赖。将不同的状态引入独立的对象中会使得状态转换变得更加明确，且减少对象间的相互依赖。
-
-3.状态类职责明确，有利于程序的扩展。通过定义新的子类很容易地增加新的状态和转换。
-
-4.状态模式的使用必然会增加系统的类与对象的个数。状态模式的结构与实现都较为复杂，如果使用不当会导致程序结构和代码的混乱。
-
-5.状态模式对开闭原则的支持并不太好，对于可以切换状态的状态模式，增加新的状态类需要修改那些负责状态转换的源码，否则无法切换到新增状态，而且修改某个状态类的行为也需要修改对应类的源码。
-
-
-
-典型运用场景举例：
-
-一个操作中含有庞大的分支结构，并且这些分支决定于对象的状态时，例如条件、分支判断语句的替代者。
-
-工作流场景的设计，例如审批流程，请假流程，状态会随着审批者的审批结果而改变。
+![image-20240420225425914](assets/状态模式运行结果.png)
 
 
 

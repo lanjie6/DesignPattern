@@ -6,7 +6,7 @@ package com.java.behavioralType.state;
 public abstract class AbstractState {
 
     //环境
-    protected ScoreContext hj;
+    protected ScoreContext environment;
 
     //状态名
     protected String stateName;
@@ -23,6 +23,6 @@ public abstract class AbstractState {
         score += x;
         System.out.print("加上：" + x + "分，当前分数：" + score);
         checkState();
-        System.out.println("分，当前状态：" + hj.getState().stateName);
+        System.out.println("分，当前状态：" + environment.getState().stateName);
     }
 }
