@@ -21,8 +21,8 @@ public abstract class AbstractState {
 
     public void addScore(int x) {
         score += x;
-        System.out.print("加上：" + x + "分，\t当前分数：" + score);
+        System.out.print("加上：" + x + "分，当前分数：" + score);
         checkState();
-        System.out.println("分，\t当前状态：" + hj.getState().stateName);
+        System.out.println("分，当前状态：" + hj.getState().stateName);
     }
 }
