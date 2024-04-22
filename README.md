@@ -5902,6 +5902,10 @@ public class StudyLeader extends ClassLeader {
 
 ```
 
+运行结果：
+
+![image-20240422210523146](assets/中介者模式运行结果.png)
+
 总结：
 
 1.类之间各司其职，符合迪米特法则。
