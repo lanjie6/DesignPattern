@@ -17,14 +17,6 @@ public class ConcreteIterator implements Iterator {
         this.list = list;
     }
 
-    public boolean hasNext() {
-        if (index < list.size() - 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public Object first() {
         return list.get(0);
     }
@@ -35,5 +27,9 @@ public class ConcreteIterator implements Iterator {
             obj = list.get(++index);
         }
         return obj;
+    }
+
+    public boolean hasNext() {
+        return index < list.size() - 1;
     }
 }

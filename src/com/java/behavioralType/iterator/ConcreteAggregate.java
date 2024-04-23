@@ -20,6 +20,6 @@ public class ConcreteAggregate implements Aggregate {
     }
 
     public Iterator getIterator() {
-        return (new ConcreteIterator(list));
+        return new ConcreteIterator(list);
     }
 }

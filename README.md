@@ -5676,6 +5676,28 @@ public class HighState extends AbstractState {
 
 
 
+总结：
+
+1.结构清晰，状态模式将与特定状态相关的行为局部化到一个状态中，并且将不同状态的行为分割开来，满足“单一职责原则”。
+
+2.将状态转换显示化，减少对象间的相互依赖。将不同的状态引入独立的对象中会使得状态转换变得更加明确，且减少对象间的相互依赖。
+
+3.状态类职责明确，有利于程序的扩展。通过定义新的子类很容易地增加新的状态和转换。
+
+4.状态模式的使用必然会增加系统的类与对象的个数。状态模式的结构与实现都较为复杂，如果使用不当会导致程序结构和代码的混乱。
+
+5.状态模式对开闭原则的支持并不太好，对于可以切换状态的状态模式，增加新的状态类需要修改那些负责状态转换的源码，否则无法切换到新增状态，而且修改某个状态类的行为也需要修改对应类的源码。
+
+
+
+典型运用场景举例：
+
+一个操作中含有庞大的分支结构，并且这些分支决定于对象的状态时，例如条件、分支判断语句的替代者。
+
+工作流场景的设计，例如审批流程，请假流程，状态会随着审批者的审批结果而改变。
+
+
+
 ## 5.7中介者模式
 
 中介者模式是指定义一个中介对象来封装一系列对象之间的交互，使原有对象之间的耦合松散，且可以独立地改变它们之间的交互。中介者模式又叫调停模式，它是迪米特法则的典型应用。
@@ -5967,18 +5989,28 @@ UML类图：
 public class Client {
 
     public static void main(String[] args) {
+        //创建聚合对象
         Aggregate ag = new ConcreteAggregate();
         ag.add("中山大学");
         ag.add("华南理工");
         ag.add("韶关学院");
-        System.out.println("聚合的内容有：");
+
         Iterator it = ag.getIterator();
-        while (it.hasNext()) {
-            Object ob = it.next();
-            System.out.println(ob.toString());
-        }
+
+        //获取第一个元素
         Object ob = it.first();
-        System.out.println("First：" + ob.toString());
+        System.out.println("第一个元素：" + ob);
+
+        //删除一个元素
+        ag.remove("韶关学院");
+
+        //遍历聚合元素
+        System.out.println("遍历聚合对象：");
+        while (it.hasNext()) {
+            Object element = it.next();
+            System.out.println(element);
+        }
+
     }
 }
 ```
@@ -6032,7 +6064,7 @@ public class ConcreteAggregate implements Aggregate {
     }
 
     public Iterator getIterator() {
-        return (new ConcreteIterator(list));
+        return new ConcreteIterator(list);
     }
 }
 ```
@@ -6084,14 +6116,6 @@ public class ConcreteIterator implements Iterator {
         this.list = list;
     }
 
-    public boolean hasNext() {
-        if (index < list.size() - 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public Object first() {
         return list.get(0);
     }
@@ -6103,8 +6127,18 @@ public class ConcreteIterator implements Iterator {
         }
         return obj;
     }
+
+    public boolean hasNext() {
+        return index < list.size() - 1;
+    }
 }
 ```
+
+运行结果：
+
+![image-20240423205430069](assets/迭代器模式运行结果.png)
+
+
 
 总结：
 
