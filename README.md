@@ -6213,6 +6213,7 @@ public class Client {
         accountBook.addBill(new ConsumeBill(1000, "工资"));
         accountBook.addBill(new ConsumeBill(2000, "材料费"));
 
+        //创建两个访问者
         AccountBookViewer boss = new Boss();
         AccountBookViewer cpa = new CPA();
 
@@ -6222,6 +6223,33 @@ public class Client {
 
         ((Boss) boss).getTotalConsume();
         ((Boss) boss).getTotalIncome();
+    }
+}
+```
+
+
+
+账本AccountBook类：
+
+```java
+/**
+ * 账本类（对象结构角色）
+ */
+public class AccountBook {
+
+    //单子列表
+    private List<Bill> billList = new ArrayList<>();
+
+    //添加单子
+    public void addBill(Bill bill) {
+        billList.add(bill);
+    }
+
+    //供账本的查看者查看账本
+    public void show(AccountBookViewer viewer) {
+        for (Bill bill : billList) {
+            bill.accept(viewer);
+        }
     }
 }
 ```
@@ -6407,30 +6435,11 @@ public class CPA implements AccountBookViewer {
 
 
 
-账本AccountBook类：
+运行结果：
 
-```java
-/**
- * 账本类（对象结构角色）
- */
-public class AccountBook {
+![image-20240428100344165](assets/访问者模式运行结果.png)
 
-    //单子列表
-    private List<Bill> billList = new ArrayList<>();
 
-    //添加单子
-    public void addBill(Bill bill) {
-        billList.add(bill);
-    }
-
-    //供账本的查看者查看账本
-    public void show(AccountBookViewer viewer) {
-        for (Bill bill : billList) {
-            bill.accept(viewer);
-        }
-    }
-}
-```
 
 总结：
 
