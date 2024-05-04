@@ -1932,6 +1932,14 @@ public class ZhongHuaToothpaste extends Toothpaste {
 }
 ```
 
+
+
+运行结果：
+
+![image-20240504113925035](assets/简单工厂模式运行结果.png)
+
+
+
 总结：
 
 1.简单工厂将使用方和被使用方进行解耦，提高了软件的可扩展性、可维护性和可复用性。
@@ -2128,6 +2136,14 @@ public class ZhongHuaToothpaste extends Toothpaste {
     }
 }
 ```
+
+
+
+运行结果：
+
+![image-20240504114118874](assets/工厂方法模式运行结果.png)
+
+
 
 总结：
 
@@ -2422,6 +2438,14 @@ public class GaoLuJieToothpaste extends Toothpaste {
     }
 }
 ```
+
+
+
+运行结果：
+
+![image-20240504114225751](assets/抽象工厂模式运行结果.png)
+
+
 
 总结：
 
@@ -2746,6 +2770,14 @@ public class Car {
 }
 ```
 
+
+
+运行结果：
+
+![image-20240504113649400](assets/建造者模式运行结果.png)
+
+
+
 总结：
 1.客户端（使用方）不必知道产品内部的组成细节，将产品与产品的创建过程解耦，使得相同的创建过程可以创建不同的产品。
 2.每一个具体的建造者都相对独立，而与其它的建造者都无关，因此可以很方便的替换具体的建造者或增加具体新的建造者，用户使用不同的建造者即可获得不同的产品以上两点遵守了单一职能原则。
@@ -2877,6 +2909,14 @@ public class Citation implements Cloneable {
     }
 }
 ```
+
+
+
+运行结果：
+
+![image-20240504113432174](assets/原型模式运行结果.png)
+
+
 
 总结：
 
@@ -3196,6 +3236,12 @@ public class Computer {
 
 
 
+运行结果：
+
+![image-20240504113122285](assets/适配器模式运行结果.png)
+
+
+
 3）接口适配器模式：
 
 接口适配器模式就是说一个接口含有多个抽象方法，我们通过一个抽象类来实现其具体的接口，实际在使用时可以根据要使用的方法来进行适配，这种方式的好处是在于，如果我们采用一个类直接去实现一个接口，那么需要覆盖所有的抽象方法，但可能在使用方使用时关心的是某一个方法，所以我们以抽象类的方式呈现的这种方式可以不需要我们去覆盖不关注的方法。
@@ -3485,6 +3531,14 @@ public class HamSausage extends Decorator {
 }
 ```
 
+
+
+运行结果：
+
+![image-20240504112808689](assets/装饰者模式运行结果.png)
+
+
+
 总结：
 1.装饰者模式（Decorator）也叫包装器模式（Wrapper）它降低系统的耦合度，拥有可以动态的增加或删除对象的职责，并使得具体被装饰者类和具体装饰者类可以独立变化，以便扩展新的具体被装饰者类和具体装饰者类。
 2.扩展对象功能，比继承灵活，不会导致类个数因为扩展而暴增的情况降低了类的复杂度。
@@ -3714,6 +3768,14 @@ public class Bowl {
 }
 ```
 
+
+
+运行结果：
+
+![image-20240504112538405](assets/门面模式运行结果.png)
+
+
+
 总结：
 1.门面模式对外屏蔽了子系统的细节，因此门面模式降低了客户端对子系统使用的复杂性； 
 2.门面模式对客户端与子系统的直接耦合关系进行了解耦，让子系统内部的模块更易维护和扩展；
@@ -3748,7 +3810,7 @@ ConcreteImplementor（具体实现角色）： 实现Implementor接口，在程�
 
 UML类图：
 
-![](assets/桥接模式.png)
+![](assets/桥接模式.jpg)
 
 
 
@@ -3897,6 +3959,14 @@ public class Gree implements Brand {
 }
 ```
 
+
+
+运行结果：
+
+![image-20240504112330872](assets/桥接模式运行结果.png)
+
+
+
 总结：
 1.实现了抽象部分和实现部分的分离，从而极大的提高了系统的灵活性，让抽象部分和实现部分独立开来，这也有助于系统进行分层设计，从而产生更好的结构化系统。
 2.对于系统的调用者，只需要知道抽象部分的类和实现部分的接口就可以了，其它的部分由具体业务来完成。
@@ -4043,6 +4113,14 @@ public class MemoryModuleProxy implements MemoryModule {
     }
 }
 ```
+
+
+
+运行结果：
+
+![image-20240504112038045](assets/代理模式运行结果.png)
+
+
 
 总结：
 
@@ -4264,6 +4342,14 @@ public class JDBCConnectionPool {
 }
 ```
 
+
+
+运行结果：
+
+![image-20240504111838578](assets/享元模式运行结果.png)
+
+
+
 总结：
 
 1.相同对象只要保存一份，这降低了系统中对象的数量，从而降低了系统中细粒度对象给内存带来的压力。
@@ -4480,6 +4566,14 @@ public class Goods implements Articles {
 }
 ```
 
+
+
+运行结果：
+
+![image-20240504111308356](assets/组合模式运行结果.png)
+
+
+
 总结：
 
 1.组合模式使得客户端代码可以一致地处理单个对象和组合对象，无须关心自己处理的是单个对象，还是组合对象，这简化了客户端代码。
@@ -4620,6 +4714,14 @@ public class AirTravelingStrategy implements TravelingStrategy {
     }
 }
 ```
+
+
+
+运行结果：
+
+![image-20240504111036121](assets/策略模式运行结果.png)
+
+
 
 总结：
 1.客户端增加行为不用修改原有代码，只要添加一种策略（或者行为）即可，避免了使用if--else if--else if去完成逻辑的编程的情况，是典型的if--else if--else if的“杀手”，因为遵守了开闭原则（OCP原则），所以极大地提高了软件的可扩展性、可维护性。
@@ -4812,6 +4914,14 @@ public class BiLuoChunTea extends KungFuTea {
     }
 }
 ```
+
+
+
+运行结果：
+
+![image-20240504110747609](assets/模板方法模式运行结果.png)
+
+
 
 总结：
 1.模板方法模式是将一个通用的算法抽离出来存放于一个公用的地方，也就是在父类中，提高代码的可复用性。如果整个算法的骨架需要变更只需要修改父类的模板方法或者已经实现的某些步骤，子类就会继承这些修改。
@@ -5046,6 +5156,14 @@ public class ZheJiangFan implements Fan {
     }
 }
 ```
+
+
+
+运行结果：
+
+![image-20240504110553280](assets/观察者模式运行结果.png)
+
+
 
 总结：
 
@@ -5313,6 +5431,14 @@ public class TaxationCalculateRequest {
 }
 ```
 
+
+
+运行结果：
+
+![image-20240504110331649](assets/责任链模式运行结果.png)
+
+
+
 总结：
 
 1.将请求和处理分开，实现解耦，提高了系统的灵活性遵守了单一职能原则。
@@ -5456,6 +5582,14 @@ public class OrdinaryEmployee implements Employee {
     }
 }
 ```
+
+
+
+运行结果：
+
+![image-20240504110031472](assets/委派模式运行结果.png)
+
+
 
 总结：
 1.委派的核心：就是对任务进行分发、调度、派遣。
@@ -6716,6 +6850,41 @@ public class Client {
 
 
 
+环境Context类：
+
+```java
+/**
+ * 环境类
+ */
+public class Context {
+
+    //定义免费解析的城市
+    private String[] cities = {"成都", "广州"};
+
+    //定义解析的人群
+    private String[] persons = {"老人", "妇女", "儿童"};
+
+    private Expression cityPerson;
+
+    public Context() {
+        Expression city = new TerminalExpression(cities);
+        Expression person = new TerminalExpression(persons);
+        cityPerson = new AndExpression(city, person);
+    }
+
+    public void freeRide(String info) {
+        boolean ok = cityPerson.interpret(info);
+        if (ok) {
+            System.out.println("您是" + info + "，您本次乘车免费！");
+        } else {
+            System.out.println(info + "，您不是免费人员，本次乘车扣费2元！");
+        }
+    }
+}
+```
+
+
+
 抽象表达式Expression接口：
 
 ```java
@@ -6783,38 +6952,11 @@ public class AndExpression implements Expression {
 
 
 
-环境Context类：
+运行结果：
 
-```java
-/**
- * 环境类
- */
-public class Context {
+![image-20240504105434124](assets/解释器模式运行结果.png)
 
-    //定义免费解析的城市
-    private String[] cities = {"成都", "广州"};
 
-    //定义解析的人群
-    private String[] persons = {"老人", "妇女", "儿童"};
-
-    private Expression cityPerson;
-
-    public Context() {
-        Expression city = new TerminalExpression(cities);
-        Expression person = new TerminalExpression(persons);
-        cityPerson = new AndExpression(city, person);
-    }
-
-    public void freeRide(String info) {
-        boolean ok = cityPerson.interpret(info);
-        if (ok) {
-            System.out.println("您是" + info + "，您本次乘车免费！");
-        } else {
-            System.out.println(info + "，您不是免费人员，本次乘车扣费2元！");
-        }
-    }
-}
-```
 
 总结：
 
